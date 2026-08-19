@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Revenda.Identity.Api/Revenda.Identity.Api.csproj" />
+    <Project Path="src/Revenda.Identity.Application/Revenda.Identity.Application.csproj" />
+    <Project Path="src/Revenda.Identity.Domain/Revenda.Identity.Domain.csproj" />
+    <Project Path="src/Revenda.Identity.Infrastructure/Revenda.Identity.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Revenda.Identity.IntegrationTests/Revenda.Identity.IntegrationTests.csproj" />
+    <Project Path="tests/Revenda.Identity.UnitTests/Revenda.Identity.UnitTests.csproj" />
+  </Folder>
+</Solution>
