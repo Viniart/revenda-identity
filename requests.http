@@ -1,0 +1,52 @@
+@identity = http://localhost:8081
+
+### Cadastro do comprador
+POST {{identity}}/customers
+Content-Type: application/json
+
+{
+  "name": "Ana Silva",
+  "cpf": "529.982.247-25",
+  "email": "ana@revenda.com",
+  "password": "Revenda2026"
+}
+
+### Login do comprador
+# @name loginComprador
+POST {{identity}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "ana@revenda.com",
+  "password": "Revenda2026"
+}
+
+### Login do administrador criado na subida
+# @name loginAdmin
+POST {{identity}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@revenda.com",
+  "password": "Revenda2026"
+}
+
+### Perfil do comprador autenticado
+GET {{identity}}/customers/me
+Authorization: Bearer {{loginComprador.response.body.accessToken}}
+
+### Atualizacao do proprio cadastro
+PUT {{identity}}/customers/me
+Content-Type: application/json
+Authorization: Bearer {{loginComprador.response.body.accessToken}}
+
+{
+  "name": "Ana Souza",
+  "email": "ana.souza@revenda.com"
+}
+
+### Chave publica usada pelo servico de veiculos
+GET {{identity}}/.well-known/jwks.json
+
+### Saude
+GET {{identity}}/health
