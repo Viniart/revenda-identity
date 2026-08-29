@@ -23,7 +23,7 @@ public sealed record Cpf
         return new Cpf(digits);
     }
 
-    public string ToMasked() =>
+    public string ToFormatted() =>
         $"{Value[..3]}.{Value[3..6]}.{Value[6..9]}-{Value[9..]}";
 
     public override string ToString() => Value;

@@ -14,7 +14,7 @@ public sealed record CustomerOutput(
         new(
             customer.Id,
             customer.Name,
-            customer.Cpf.ToMasked(),
+            customer.Cpf.ToFormatted(),
             customer.Email.Value,
             customer.Role.ToString(),
             customer.CreatedAt);
