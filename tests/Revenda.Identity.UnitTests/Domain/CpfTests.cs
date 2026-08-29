@@ -31,9 +31,9 @@ public class CpfTests
     }
 
     [Fact]
-    public void ToMasked_DeveAplicarFormatoDeExibicao()
+    public void ToFormatted_DeveAplicarFormatoDeExibicao()
     {
-        Cpf.Create("52998224725").ToMasked().Should().Be("529.982.247-25");
+        Cpf.Create("52998224725").ToFormatted().Should().Be("529.982.247-25");
     }
 
     [Fact]
