@@ -7,9 +7,14 @@ namespace Revenda.Identity.IntegrationTests;
 
 public class CustomerRegistrationTests : IClassFixture<IdentityApiFactory>
 {
+    private readonly IdentityApiFactory _factory;
     private readonly HttpClient _client;
 
-    public CustomerRegistrationTests(IdentityApiFactory factory) => _client = factory.CreateClient();
+    public CustomerRegistrationTests(IdentityApiFactory factory)
+    {
+        _factory = factory;
+        _client = factory.CreateClient();
+    }
 
     [Fact]
     public async Task Cadastro_LoginEConsultaDePerfil_DevemFuncionarEmSequencia()
@@ -72,7 +77,9 @@ public class CustomerRegistrationTests : IClassFixture<IdentityApiFactory>
     [Fact]
     public async Task Perfil_DeveResponder401_SemToken()
     {
-        var semToken = new HttpClient { BaseAddress = _client.BaseAddress };
+        // O cliente da fábrica fala com o servidor em memória. Um HttpClient comum tentaria
+        // uma conexão TCP real, que não existe, e o teste falharia antes de chegar à API.
+        var semToken = _factory.CreateClient();
 
         var resposta = await semToken.GetAsync("/customers/me");
 
